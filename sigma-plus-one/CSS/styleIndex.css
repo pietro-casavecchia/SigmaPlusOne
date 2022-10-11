@@ -1,0 +1,164 @@
+:root {
+    --backgroundColor: white;
+    --colorContainer: white;
+    --colorContainerInteractive: rgb(255, 255, 255);
+    --color: black;
+
+    --font-family: 'Times New Roman', Times, serif;
+    --font-size: 18px;
+
+    --heightBox: auto;
+    --widthBox: 450px;
+    --listPadding: 5px;
+
+    --padding: 4px;
+    --paddingLeft: 26px;
+
+    --border: 0px;
+    --borderLeft: 3px;
+    --borderLeftColor: black;
+    --borderLeftInteractive: 5px;
+
+    --marginContainer: 40px;
+    --marginContainerLeft: 80px;
+    --marginBoxBottomTop: 10px; 
+
+    --transition: 0s;
+    /* how much it takes to change with hover */
+    --transitionDelayMain: 0s;
+    /* how much remains after hover */
+    --transitionDelayHover: 0s;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+
+    background-color: var(--backgroundColor);
+    color: var(--color);
+}
+
+/* 
+there are three cases 
+single box, container and inside box 
+the inside box can be top middle and bottom
+*/
+
+/* home */
+#homeImage {
+    position: fixed;
+    left: 60px;
+    width: 50px;
+    height: 50px;
+}
+#homeImage:hover {
+    left: 58px;
+    width: 54px;
+    height: 54px;
+}
+/* title */
+h1 {
+    height: var(--heightBox);
+    max-width: var(--widthBox);
+
+    background-color: var(--colorContainerInteractive);
+
+    padding: var(--padding);
+    padding-left: var(--paddingLeft);
+
+    border-width: var(--border);
+    border-style: solid;
+    border-left-width: var(--borderLeft);
+
+    margin: var(--marginContainer);
+    margin-left: 
+    calc(var(--marginContainer) + 
+    var(--marginContainerLeft));
+}
+h1:hover {
+    border-left-width: var(--borderLeftInteractive);
+    margin-left: 
+    calc(var(--marginContainer) + 
+    var(--marginContainerLeft) - 
+    var(--borderLeftInteractive) + 
+    var(--borderLeft));
+}
+/* text */
+#listText {
+    text-align: justify;
+    text-justify: auto;
+
+    height: var(--heightBox);
+    max-width: var(--widthBox);
+
+    background-color: var(--colorContainer);
+
+    padding: var(--padding);
+    padding-left: var(--paddingLeft);
+
+    border-width: var(--border);
+    border-style: solid;
+    border-left-width: var(--borderLeft);
+
+    margin: var(--marginContainer);
+    margin-left: 
+    calc(var(--marginContainer) + 
+    var(--marginContainerLeft));
+
+    list-style-position: inside;
+
+    transition: var(--transition) background-color;
+    transition-delay: var(--transitionDelayMain);
+}
+#listText:hover {
+    background-color: var(--colorContainerInteractive);
+    transition-delay: var(--transitionDelayHover);
+
+    border-left-width: var(--borderLeftInteractive);
+    margin-left: 
+    calc(var(--marginContainer) + 
+    var(--marginContainerLeft) - 
+    var(--borderLeftInteractive) + 
+    var(--borderLeft));
+}
+.text {
+    padding: var(--listPadding);
+}
+/* links */
+#listLinks {
+    height: var(--heightBox);
+    max-width: var(--widthBox);
+
+    background-color: var(--colorContainer);
+
+    padding: var(--padding);
+    padding-left: var(--paddingLeft);
+
+    border-width: var(--border);
+    border-style: solid;
+    border-left-width: var(--borderLeft);
+
+    margin: var(--marginContainer);
+    margin-left: 
+    calc(var(--marginContainer) + 
+    var(--marginContainerLeft));
+
+    list-style-position: inside;
+
+    transition: var(--transition) background-color;
+    transition-delay: var(--transitionDelayMain);
+}
+#listLinks:hover {
+    background-color: var(--colorContainerInteractive);
+    transition-delay: var(--transitionDelayHover);
+
+    border-left-width: var(--borderLeftInteractive);
+    margin-left: 
+    calc(var(--marginContainer) + 
+    var(--marginContainerLeft) - 
+    var(--borderLeftInteractive) + 
+    var(--borderLeft));
+}
+.link {
+    padding: var(--listPadding);
+}

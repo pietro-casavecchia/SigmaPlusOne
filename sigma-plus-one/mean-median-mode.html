@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mean, Median & Mode</title> 
+        <link rel="stylesheet" href="CSS/styleFunction.css" type="text/css">
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>
+            MathJax = {
+                chtml: {
+                    scale: 1,
+                    minScale: .5,
+                    matchFontHeight: true,
+                    mtextInheritFont: false,
+                    merrorInheritFont: true,
+                    mathmlSpacing: false,
+                    skipAttributes: {},
+                    exFactor: .5,
+                    displayAlign: "left",
+                    displayIndent: "0"
+                }
+            };
+        </script>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="favicon_io/site.webmanifest">
+    </head>
+    <body>
+        <a href="index.html" id="home">
+            <img alt="Home" id="homeImage" src="favicon_io/android-chrome-512x512.png">
+        </a>
+
+        <h1>Mean, Median & Mode</h1>
+
+        <div id="info">
+            <ul id="listWiki">
+                <li class="wiki"><a id="wiki" href="https://en.wikipedia.org/wiki/Mean" target="_blank">Wikipedia: Mean</a></li>
+                <li class="wiki"><a id="wiki" href="https://en.wikipedia.org/wiki/Median" target="_blank">Wikipedia: Median</a></li>
+                <li class="wiki"><a id="wiki" href="https://en.wikipedia.org/wiki/Mode_(statistics)" target="_blank">Wikipedia: Mode</a></li>
+            </ul>
+
+            <p>
+                The arithmetic mean is found by adding the numbers and dividing the sum by the number of numbers in the list. 
+                The median is the middle value in a list ordered from smallest to largest. 
+                The mode is the most frequently occurring value on the list.
+            </p>
+        </div>
+
+        <div id="math">
+            <div class="equation_1">
+                $$ 
+                \overline{x} = 
+                \frac{1}{n} 
+                \left(\sum_{i=1}^{n} x_{i} \right) = 
+                \frac{x_{1}+x_{2}+ \cdots + x_{n}}{n} 
+                $$
+            </div>
+            <ul class="listTerms_1">
+                <li class="term">\(\overline{x}\) = Mean </li>
+                <li class="term">\(x_{i}\) = The value with index i form the data set </li>
+                <li class="term">\(n\) = Number of values in data set </li>
+            </ul>
+            <div class="equation_2">
+                $$ 
+                Med(X) = \begin{cases} X\left[\frac{n}{2}\right] 
+                & \mbox{if } n \mbox{ is even} \\
+                \frac{X\left[\frac{n-1}{2}\right] + X\left[\frac{n+1}{2}\right]}{2} 
+                & \mbox{if } n \mbox{ is odd}\end{cases} 
+                $$
+            </div>
+            <ul class="listTerms_2">
+                <li class="term">\(Med(X)\) = Median </li>
+                <li class="term">\(X\) = Ordered list of values in data set </li>
+                <li class="term">\(n\) = Number of values in data set </li>
+            </ul>
+            <div class="equation_3">
+                $$ M_{o} = 
+                l + h \left( \frac{f_{1}-f_{0}}{2f_{1}-f_{0}-f_{2}}\right)
+                $$
+            </div>
+            <ul class="listTerms_3">
+                <li class="term">\(M_{o}\) = Mode </li>
+                <li class="term">\(l\) = Lower limit of the modal class </li>
+                <li class="term">\(h\) = Size of the class interval </li>
+                <li class="term">\(f_{1}\) = Frequency of the modal class </li>
+                <li class="term">\(f_{0}\) = Frequency of the class preceding the modal class </li>
+                <li class="term">\(f_{2}\) = Frequency of the class succeeding the modal class </li>
+            </ul>
+        </div>
+        
+        <div id="formFile">
+            <form>
+                <div id="fileDiv">
+                    <input type="file" id="csv" accept=".csv">
+
+                    <input type="button" id="selectFileButton" 
+                        onclick="document.getElementById('csv').click()" 
+                        value="Select a CSV File"/>
+                </div>
+                <div id="submitDiv">
+                    <button id="submitButton">Submit</button> 
+                    &nbsp;
+                    <span id="submitted">Not submitted</span>
+                </div>
+            </form>
+        </div>
+
+        <div id="formHeaderRow">
+            <form>
+                <p>Headers in the uploaded CSV: &nbsp;[<span id="headers">None</span>]</p>
+                <p>Rows in the uploaded CSV: &nbsp;[<span id="rowsOutput">None</span>]</p>
+
+                <p id="instruction">
+                    Select the header of the corresponding columns 
+                    and the number of rows to apply for every column to analyze, 
+                    leave blank the row input to select all rows in the CSV.
+                    For apply the analysis to another colum, just change the header name.
+                </p>
+
+                <div id="rowDiv">
+                    <label for="rowsInput">Rows:</label>
+                    <br>
+                    <input type="number" id="rowsInput" placeholder="Rows number">
+                </div>
+                <div class="headerDiv">
+                    <label for="header_1">Column 1:</label>
+                    <br>
+                    <input type="text" id="header_1" placeholder="Header name" autocomplete="off">
+                </div>
+            </form>
+        </div>
+
+        <div id="results">
+            <div id="calculationDiv">
+                <button id="calculateButton">Calculate</button>
+            </div>
+
+            <ul id="listResults">
+                <li class="result">\(\overline{x}\) = <span id="result_1">None</span></li>
+                <li class="result">\(Med(X)\) = <span id="result_2">None</span></li>
+                <li class="result">\(M_{o}\) = <span id="result_3">None</span></li>
+                <li class="result">\(freq(M_{o})\) = <span id="result_4">None</span></li>
+                <li class="result">\(min\) = <span id="result_5">None</span></li>
+                <li class="result">\(max\) = <span id="result_6">None</span></li>
+                <li class="result">\(n\) = <span id="result_7">None</span></li>
+            </ul>
+        </div>
+
+        <script src="JS/download-convert.js"></script>
+        <script src="JS/mean-median-mode.js"></script>
+    </body>
+</html>

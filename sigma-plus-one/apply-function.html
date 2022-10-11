@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Apply Function</title> 
+        <link rel="stylesheet" href="CSS/styleFunction.css" type="text/css">
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>
+            MathJax = {
+                chtml: {
+                    scale: 1,
+                    minScale: .5,
+                    matchFontHeight: true,
+                    mtextInheritFont: false,
+                    merrorInheritFont: true,
+                    mathmlSpacing: false,
+                    skipAttributes: {},
+                    exFactor: .5,
+                    displayAlign: "left",
+                    displayIndent: "0"
+                }
+            };
+        </script> 
+
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="favicon_io/site.webmanifest">
+    </head>
+    <body>
+        <a href="index.html" id="home">
+            <img alt="Home" id="homeImage" src="favicon_io/android-chrome-512x512.png">
+        </a>
+
+        <h1>Apply Function</h1>
+
+        <div id="info">
+            <ul id="listWiki">
+                <li class="wiki"><a id="wiki" href="https://en.wikipedia.org/wiki/Function_(mathematics)" target="_blank">Wikipedia: Function</a></li>
+            </ul>
+
+            <p>
+                A function defines a relationship between one variable that is 
+                the independent variable, and another variable that is 
+                the dependent variable. The application of a function to a value give an output value 
+                that is dependent by the function and the input selected variable.
+                This program apply a function to elements of a CSV file.
+            </p>
+        </div>
+
+        <div id="math">
+            <div class="equation_1">
+                $$ 
+                y = f(x)
+                $$
+            </div>
+            <ul class="listTerms_1">
+                <li class="term">\(y\) = Output, dependent variable </li>
+                <li class="term">\(x\) = Input, independent variable </li>
+            </ul>
+        </div>
+        
+        <div id="formFile">
+            <form>
+                <div id="fileDiv">
+                    <input type="file" id="csv" accept=".csv">
+
+                    <input type="button" id="selectFileButton" 
+                        onclick="document.getElementById('csv').click()" 
+                        value="Select a CSV File"/>
+                </div>
+                <div id="submitDiv">
+                    <button id="submitButton">Submit</button> 
+                    &nbsp;
+                    <span id="submitted">Not submitted</span>
+                </div>
+            </form>
+        </div>
+
+        <div id="formHeaderRow">
+            <form>
+                <p>Headers in the uploaded CSV: &nbsp;[<span id="headers">None</span>]</p>
+                <p>Rows in the uploaded CSV: &nbsp;[<span id="rowsOutput">None</span>]</p>
+
+                <p id="instruction">
+                    The function to apply over the CSV need to be written with the variable \(x\) like in the example.
+                    Select the number of rows to analyze, leave blank for selecting all the rows.
+                    Select the columns to analyze by input the corresponding header.
+                </p>
+
+                <div id="eqDiv">
+                    <label for="eq">Function:</label>
+                    <br>
+                    <textarea id="eq" placeholder="Use JavaScript Math built-in object e.g. Math.sin(x)"></textarea>
+                </div>
+
+                <div id="rowDiv">
+                    <label for="rowsInput">Rows:</label>
+                    <br>
+                    <input type="number" id="rowsInput" placeholder="Rows number">
+                </div>
+
+                <div id="headerDiv_1" class="headerDiv">
+                    <label id="label_1" for="header_1">Column 1:</label>
+                    <br id="br_1">
+                    <input type="text" id="header_1" class="headerClass" placeholder="Header name 1" autocomplete="off">
+                    &nbsp;
+                    <button type="button" class="plusMinusButton" onclick="add_field()">
+                        \(+\)
+                    </button>
+                    <button type="button" class="plusMinusButton" onclick="remove_field()">
+                        \(-\)
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div id="results">
+            <p id="instructionDownload">
+                It is possible to download a CSV file with only the selected columns in which the function has been applied, 
+                else to download the submitted file with the selected columns updated.
+                There is the option to give a name the the file to download with the extension .csv before downloading it.
+            </p>
+
+            <div id="calculationDiv">
+                <button id="calculateButton">Calculate</button>
+                &nbsp;
+                <input type="text" id="nameCSV" placeholder="e.g. my_data.csv" autocomplete="off">
+            </div>
+
+            <div id="download">
+                <button id="downloadNewButton" class="downloadButton">Download new CSV</button>
+                &nbsp;
+                <button id="downloadUpdatedButton" class="downloadButton">Download updated CSV</button>
+            </div>
+
+            <ul id="listResults">
+                <li class="result"> Array new = <span id="result_1">None</span></li>
+                <li class="result"> Array updated = <span id="result_2">None</span></li>
+            </ul>
+        </div>
+
+        <script src="JS/download-convert.js"></script>
+        <script src="JS/apply-function.js"></script>
+    </body>
+</html>

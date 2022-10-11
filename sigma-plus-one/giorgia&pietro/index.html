@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <style>
+            body {
+                background-color: black;
+            }
+            div {
+                display: flex;
+                justify-content: center;
+            }
+            span {
+                font-size: 42px;
+                font-family: 'Courier New', Courier, monospace;
+                color: white;
+                position: absolute;
+                top: 50%;
+                transform: translate(0, -50%);
+                margin-left: -250px;
+            }
+            input[type=password] {
+                font-size: 42px;
+                background-color: white;
+                position: absolute;
+                top: 50%;
+                transform: translate(0, -50%);
+                border: none;
+                width: 250px;
+                border-radius: 3px;
+                transition: background-color 1.5s;
+            }
+            input[type=password]:focus {
+                outline: none;
+                border: none;
+                background-color: black;
+                color: white;
+            }
+            #bear {
+                position: absolute;
+                top: 50%;
+                transform: translate(0, -50%);
+                margin-left: 50px;
+            }
+            #heart {
+                position: absolute;
+                top: 50%;
+                transform: translate(0, -50%);
+                margin-left: 150px;
+            }
+        </style>
+    </head>
+    <body> 
+        <div>
+            <input type="password" id="pass" name="password" required> 
+            <span id="loveYou">Love you</span>
+
+            <img src="../imagesPG/bear-512x512.png" id="bear" width="100" height="100">
+            <img src="../imagesPG/heart-512x512.png" id="heart" width="100" height="100">
+        </div>
+
+        <script>
+            var password = "soletralenuvole";
+            var link = "https://meet.google.com/dea-ufab-dfx"
+            var time = 1000;
+
+
+            document.getElementById("loveYou").style.display = "none";
+            document.getElementById("bear").style.visibility = "hidden";
+            document.getElementById("heart").style.visibility = "hidden";
+
+            document.getElementById("pass").addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+
+                    var meet = document.getElementById("pass").value;
+                    if (meet == password) {
+                        document.getElementById("pass").style.display = "none";
+
+                        document.getElementById("loveYou").style.display = "block";
+                        document.getElementById("bear").style.visibility = "visible";
+                        document.getElementById("heart").style.visibility = "visible";
+
+                        setTimeout(() => {  window.open(link); }, time);
+                    }
+                    if (meet != password) {
+                        window.location.reload();
+                    }
+                }
+            });
+        </script>
+    </body> 
+</html> 
+
+
+

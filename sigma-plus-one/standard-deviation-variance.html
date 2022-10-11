@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Standard Deviation & Variance</title> 
+        <link rel="stylesheet" href="CSS/styleFunction.css" type="text/css">
+
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>
+            MathJax = {
+                chtml: {
+                    scale: 1,
+                    minScale: .5,
+                    matchFontHeight: true,
+                    mtextInheritFont: false,
+                    merrorInheritFont: true,
+                    mathmlSpacing: false,
+                    skipAttributes: {},
+                    exFactor: .5,
+                    displayAlign: "left",
+                    displayIndent: "0"
+                }
+            };
+        </script>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="favicon_io/site.webmanifest">
+    </head>
+    <body>
+        <a href="index.html" id="home">
+            <img alt="Home" id="homeImage" src="favicon_io/android-chrome-512x512.png">
+        </a>
+
+        <h1>Standard Deviation & Variance</h1>
+
+        <div id="info">
+            <ul id="listWiki">
+                <li class="wiki"><a id="wiki" href="https://en.wikipedia.org/wiki/Standard_deviation" target="_blank">Wikipedia: Standard Deviation</a></li>
+                <li class="wiki"><a id="wiki" href="https://en.wikipedia.org/wiki/Variance" target="_blank">Wikipedia: Variance</a></li>
+            </ul>
+
+            <p>
+                The Standard Deviation is a measure of the amount of variation or dispersion of a set of values.
+                A low standard deviation indicates that the values tend to be close to the mean.
+                There are two types of Standard Deviation. The Population Standard Deviation is a parameter, 
+                which is a fixed value calculated from every individual in the population. 
+                The Sample Standard Deviation is a statistic. This means that it is calculated from only some of the individuals in a population.
+                The advantage of variance is that it treats all deviations from the mean as the same regardless of their direction.
+                Variance has not anymore the unit of measure of the data set thus is more complicate to visualize and apply in a real-world sense.
+            </p>
+        </div>
+
+        <div id="math">
+            <div class="equation_1">
+                $$ 
+                \sigma = \sqrt{\frac{1}{N}\sum_{i=1}^{N} (x_{i} - \mu)^2}
+                $$
+            </div>
+            <ul class="listTerms_1">
+                <li class="term">\(\sigma\) = Population Standard Deviation </li>
+                <li class="term">\(x_{i}\) = The value with index i form the data set </li>
+                <li class="term">\(\mu\) = The mean or expected value </li>
+                <li class="term">\(N\) = Number of values in data set </li>
+            </ul>
+            <div class="equation_2">
+                $$ 
+                s = \sqrt{\frac{1}{N - 1}\sum_{i=1}^{N} (x_{i} - \overline{x})^2}
+                $$
+            </div>
+            <ul class="listTerms_2">
+                <li class="term">\(s\) = Sample Standard Deviation </li>
+                <li class="term">\(x_{i}\) = A value with index i form the sample </li>
+                <li class="term">\(\overline{x}\) = The mean of the sample </li>
+                <li class="term">\(N\) = Sample size </li>
+            </ul>
+        </div>
+        
+        <div id="formFile">
+            <form>
+                <div id="fileDiv">
+                    <input type="file" id="csv" accept=".csv">
+
+                    <input type="button" id="selectFileButton" 
+                        onclick="document.getElementById('csv').click()" 
+                        value="Select a CSV File"/>
+                </div>
+                <div id="submitDiv">
+                    <button id="submitButton">Submit</button> 
+                    &nbsp;
+                    <span id="submitted">Not submitted</span>
+                </div>
+            </form>
+        </div>
+
+        <div id="formHeaderRow">
+            <form>
+                <p>Headers in the uploaded CSV: &nbsp;[<span id="headers">None</span>]</p>
+                <p>Rows in the uploaded CSV: &nbsp;[<span id="rowsOutput">None</span>]</p>
+
+                <p id="instruction">
+                    Select the header of the corresponding columns 
+                    and the number of rows to apply for every column to analyze, 
+                    leave blank the row input to select all rows in the CSV.
+                    For apply the analysis to another colum, just change the header name.
+                </p>
+
+                <div id="rowDiv">
+                    <label for="rowsInput">Rows:</label>
+                    <br>
+                    <input type="number" id="rowsInput" placeholder="Rows number">
+                </div>
+                <div class="headerDiv">
+                    <label for="header_1">Column 1:</label>
+                    <br>
+                    <input type="text" id="header_1" placeholder="Header name" autocomplete="off">
+                </div>
+            </form>
+        </div>
+
+        <div id="results">
+            <div id="calculationDiv">
+                <button id="calculateButton">Calculate</button>
+            </div>
+
+            <ul id="listResults">
+                <li class="result">\(\sigma\) = <span id="result_1">None</span></li>
+                <li class="result">\(s\) = <span id="result_2">None</span></li>
+                <li class="result">\(\sigma^2\) = <span id="result_3">None</span></li>
+                <li class="result">\(s^2\) = <span id="result_4">None</span></li>
+                <li class="result">\(N\) = <span id="result_5">None</span></li>
+            </ul>
+        </div>
+
+        <script src="JS/download-convert.js"></script>
+        <script src="JS/standard-deviation-variance.js"></script>
+    </body>
+</html>
